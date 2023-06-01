@@ -1,0 +1,49 @@
+.card{
+ 
+      width: 250px;
+      height: 350px;
+    }
+
+.card-img-top{
+  height: auto;
+    max-height: 150px;
+    width: auto;
+    max-width: 150px;
+  
+}
+
+.star-rating{
+  color:yellow;
+}
+.heading{
+  text-align: center;
+}
+#heart {
+  width: 15px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    z-index: 100;
+}
+.wrapper{
+  background-color:#fff;
+  margin-top:100px;
+  border-radius:10px;
+  padding:30px;
+}
+
+
+.img-fluid {
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 150px;
+
+}
+.container{
+  font-size:small;
+  margin-bottom:20px;
+}
+
