@@ -42,7 +42,12 @@ const ProductDetailPage = () => {
         <div className="wrapper">
           <div className="row">
             <div className="col-md-6">
-              <img src={product.image} alt="" className="img-fluid" />
+              <img
+                src={product.image}
+                alt=""
+                className="img-fluid"
+                width="500px"
+              />
             </div>
             <h5 class="card-title">
               <b>Brand</b>

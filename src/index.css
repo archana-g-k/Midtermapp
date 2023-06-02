@@ -4,7 +4,7 @@
       height: 350px;
     }
 
-.card-img-top{
+ .card-img-top{
   height: auto;
     max-height: 150px;
     width: auto;
@@ -12,9 +12,7 @@
   
 }
 
-.star-rating{
-  color:yellow;
-}
+
 .heading{
   text-align: center;
 }
@@ -35,13 +33,7 @@
 }
 
 
-.img-fluid {
-  height: auto;
-  max-height: 250px;
-  width: auto;
-  max-width: 150px;
 
-}
 .container{
   font-size:small;
   margin-bottom:20px;
