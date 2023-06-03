@@ -84,13 +84,19 @@ const ProductDetailPage = () => {
                 src={product.image}
                 alt=""
                 className="img-fluid"
-                width="500px"
+                width="200px"
               />
             </div>
             <h5 class="card-title">
               <b>Brand</b>
               <br />
               {product.title}
+            </h5>
+            <br />
+            <h5 class="card-title">
+              <b>Brand</b>
+              <br />
+              {product.description}
             </h5>
             <br />
             <h5 class="card-price">

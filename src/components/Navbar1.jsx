@@ -9,9 +9,9 @@ import {
 
 import "./Navbar1.css";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 const Navbar1 = () => {
-  const { numberCart } = useSelector((state) => state);
+  //const { numberCart } = useSelector((state) => state);
   const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
@@ -36,10 +36,6 @@ const Navbar1 = () => {
         </h1>
       </Link>
       <div className="form-inline ml-auto">
-        <Link to="/wishlist" className="btn btn-outline-dark me-2">
-          <FontAwesomeIcon icon={faHeart} /> Wishlist
-        </Link>
-
         <Link to="/login" className="btn btn-outline-dark me-2">
           <FontAwesomeIcon icon={faUserPlus} /> Login
         </Link>
@@ -51,6 +47,13 @@ const Navbar1 = () => {
         <Link to="/cart" className="btn btn-primary me-2">
           <FontAwesomeIcon icon={faCartShopping} /> Cart{" "}
           <span className="badge badge-light"></span>
+        </Link>
+        <Link
+          to="/wishlist"
+          className="btn btn-outline-dark me-2"
+          style={{ border: "none", background: "none", padding: 0 }}
+        >
+          <FontAwesomeIcon icon={faHeart} /> Wishlist
         </Link>
       </div>
     </nav>

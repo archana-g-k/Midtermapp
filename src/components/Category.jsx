@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import heartfill from "./heartfill.svg";
@@ -5,6 +6,11 @@ import cart3 from "./cart3.svg";
 import { Link } from "react-router-dom";
 import Star from "./Star";
 const Category = (props) => {
+  const [heartColor, setHeartColor] = useState("black");
+
+  const handleClick = () => {
+    setHeartColor("red");
+  };
   const { id, title, price, image, rating, count } = props.data;
   const product = { id, title, image, price };
   const handleCart = (product) => {
@@ -56,46 +62,47 @@ const Category = (props) => {
   };
 
   return (
-    <div class="col-sm-3">
+    <div className="col-sm-3">
       <Link to={"/product/detail/" + id} className="card">
-        <img src={image} className="card-img-top" alt="..." />
-        <span>
-          <img id="heart" src={heartfill} alt="..." />
-        </span>
-
-        <div class="card-body">
-          <h6 class="card-title">
-            <b>Brand,</b>
-            {title}
+        <div className="card-img-container">
+          <button onClick={handleClick} style={{ border: "none" }}>
+            <img id="heart" src={heartfill} alt="..." />
+          </button>
+        </div>
+        <div className="card-img-name">
+          <img
+            src={image}
+            className="card-img-top"
+            alt="..."
+            height={200}
+            width={150}
+          />
+        </div>
+        <div className="card-body">
+          <h6 className="card-title" id="card-title">
+            <b>Brand,</b> {title}
           </h6>
           <h6>{count}</h6>
           <h6>
-            <span>$</span>
-            {price}
+            <span>$</span> {price}
           </h6>
           <div className="star-rating">
             <p className="card-text">
               <Star stars={rating.rate} reviews={rating.count} />
             </p>
           </div>
-          <Link to={"/product/detail/" + id} class="btn btn-primary btn-block">
+          <Link
+            to={"/product/detail/" + id}
+            className="btn btn-primary btn-block"
+          >
             <button
               className="btn btn-outline-dark m-2 align-center"
               onClick={() => handleCart(product)}
+              style={{ color: "white", border: "none" }}
             >
               <FontAwesomeIcon icon={faCartShopping} />
               Add to cart
             </button>
-            <div className="wishC">
-              {" "}
-              <button
-                href="#"
-                className="btn btn-outline-dark"
-                onClick={() => handleWish(product)}
-              >
-                <FontAwesomeIcon icon={faHeart} />
-              </button>{" "}
-            </div>
           </Link>
         </div>
       </Link>
