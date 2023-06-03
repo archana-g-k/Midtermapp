@@ -7,13 +7,11 @@ import Navbar1 from "../components/Navbar1";
 
 import Navbar2 from "../components/Navbar2";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/actions/cart-actions";
-import { deleteFromCart } from "../redux/actions/cart-actions";
-import { getNumberFromCart } from "../redux/actions/cart-actions";
+
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductDetailPage = () => {
-  const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const fetchData = () => {
@@ -25,15 +23,55 @@ const ProductDetailPage = () => {
   useEffect(() => {
     fetchData();
   }, [id]);
-  const onClickHandler = () => {
-    dispatch(addToCart(product));
+
+  const handleCart = (product) => {
+    console.log(product);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const isProductExist = cart.find((item) => item.id === product.id);
+    if (isProductExist) {
+      const updatedCart = cart.map((item) => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } else {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...cart, { ...product, quantity: 1 }])
+      );
+    }
+    alert("Product added to cart");
   };
-  const onClick = () => {
-    dispatch(deleteFromCart(product));
+
+  const handleWish = (product) => {
+    console.log(product);
+    const wish = JSON.parse(localStorage.getItem("wish")) || [];
+    const isProductExist = wish.find((item) => item.id === product.id);
+    if (isProductExist) {
+      const updatedWish = wish.map((item) => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      localStorage.setItem("wish", JSON.stringify(updatedWish));
+    } else {
+      localStorage.setItem(
+        "wish",
+        JSON.stringify([...wish, { ...product, quantity: 1 }])
+      );
+    }
+    alert("Product added to Wishlist");
   };
-  const onClic = () => {
-    dispatch(getNumberFromCart(product));
-  };
+
   return (
     <>
       <Navbar1 />
@@ -59,14 +97,23 @@ const ProductDetailPage = () => {
               <span>${product.price}</span>
             </h5>
             <div className="col-md-6">
-              <button onClick={onClickHandler} className="btn btn-primary">
+              <button
+                onClick={() => handleCart(product)}
+                className="btn btn-primary"
+              >
                 Add to Cart
               </button>
             </div>
             <div className="col-md-6">
-              <button onClick={onClick} className="btn btn-primary">
-                Delete from Cart
-              </button>
+              <div className="wishP">
+                <button
+                  href="#"
+                  className="btn btn-outline-dark"
+                  onClick={() => handleWish(product)}
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

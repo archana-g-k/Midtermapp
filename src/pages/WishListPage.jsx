@@ -5,45 +5,45 @@ import Navbar2 from "../components/Navbar2";
 const CartPage = () => {
   const navigate = useNavigate();
 
-  const carts = JSON.parse(localStorage.getItem("cart")) || [];
+  const wishes = JSON.parse(localStorage.getItem("wish")) || [];
 
   const removeProduct = (id) => {
-    const updatedCart = carts.filter((item) => item.id !== id);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    navigate("/cart");
+    const updatedWish = wishes.filter((item) => item.id !== id);
+    localStorage.setItem("wish", JSON.stringify(updatedWish));
+    navigate("/wishlist");
   };
 
   return (
-    <div className="cart">
+    <div className="wish">
       <Navbar1 />
       <Navbar2 />
-      <p className="cartDef">Shopping Cart</p>
+      <p className="cartDef">Wishlist</p>
       <Link to="/" className="p-5">
         <button className="btn btn-outline-dark m-2 align-center">
           Continue Shopping
         </button>
       </Link>
 
-      {carts?.map((cart) => {
+      {wishes?.map((wish) => {
         return (
           <div className="col-md-4 mt-5 p-3">
             <div className="card h-100 text-center p-4">
               <div className="card-body">
                 <img
-                  src={cart?.image}
+                  src={wish?.image}
                   alt=""
                   className="img-fluid"
                   width="400px"
                 />
 
-                <h5 className="card-title mb-3 ">{cart.title}</h5>
+                <h5 className="card-title mb-3 ">{wish.title}</h5>
                 <button
                   className="btn btn-outline-dark m-2 align-center"
                   onClick={() => {
-                    removeProduct(cart?.id);
+                    removeProduct(wish?.id);
                   }}
                 >
-                  Remove Cart
+                  Remove From Wishlist
                 </button>
               </div>
             </div>
