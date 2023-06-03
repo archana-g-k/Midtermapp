@@ -1,0 +1,24 @@
+.icon-style {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: flex-start;
+    size: 1rem;
+}
+
+.icon {
+    font-size: medium;
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.empty-icon {
+    font-size: medium;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    font-size: small;
+}
