@@ -78,7 +78,7 @@ const ProductDetailPage = () => {
                 src={product.image}
                 alt=""
                 className="img-fluid"
-                width="300px"
+                width="150px"
               />
             </div>
             <h5 class="card-title small-text">
