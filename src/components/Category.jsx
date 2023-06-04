@@ -6,11 +6,6 @@ import cart3 from "./cart3.svg";
 import { Link } from "react-router-dom";
 import Star from "./Star";
 const Category = (props) => {
-  const [heartColor, setHeartColor] = useState("black");
-
-  const handleClick = () => {
-    setHeartColor("red");
-  };
   const { id, title, price, image, rating, count } = props.data;
   const product = { id, title, image, price };
   const handleCart = (product) => {
@@ -34,11 +29,9 @@ const Category = (props) => {
         JSON.stringify([...cart, { ...product, quantity: 1 }])
       );
     }
-    alert("Product added to cart");
   };
 
   const handleWish = (product) => {
-    console.log(product);
     const wish = JSON.parse(localStorage.getItem("wish")) || [];
     const isProductExist = wish.find((item) => item.id === product.id);
     if (isProductExist) {
@@ -58,15 +51,22 @@ const Category = (props) => {
         JSON.stringify([...wish, { ...product, quantity: 1 }])
       );
     }
-    alert("Product added to Wishlist");
   };
 
   return (
     <div className="col-sm-3">
       <Link to={"/product/detail/" + id} className="card">
         <div className="card-img-container">
-          <button onClick={handleClick} style={{ border: "none" }}>
-            <img id="heart" src={heartfill} alt="..." />
+          <button
+            onClick={() => handleWish(product)}
+            style={{ border: "none" }}
+          >
+            <img
+              id="heart"
+              src={heartfill}
+              alt="..."
+              style={{ filter: "grayscale(100%)", transition: "filter 0.3s" }}
+            />
           </button>
         </div>
         <div className="card-img-name">

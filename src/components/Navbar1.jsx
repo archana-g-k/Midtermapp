@@ -53,7 +53,7 @@ const Navbar1 = () => {
           className="btn btn-outline-dark me-2"
           style={{ border: "none", background: "none", padding: 0 }}
         >
-          <FontAwesomeIcon icon={faHeart} /> Wishlist
+          <FontAwesomeIcon icon={faHeart} />
         </Link>
       </div>
     </nav>
